@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Lulustream Mass Downloader",
+  "version": "1.0",
+  "description": "Mass download extension for lulustream.com",
+  "permissions": [
+    "downloads",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://lulustream.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["https://lulustream.com/*"],
+    "js": ["contentScript.js"]
+  }]
+}
