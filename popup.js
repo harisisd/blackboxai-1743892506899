@@ -28,8 +28,12 @@ async function refreshDownloadList() {
     
     try {
         const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-        if (!tabs[0]?.url?.includes('lulustream.com')) {
-            throw new Error('Please navigate to lulustream.com to use this extension');
+        const currentUrl = tabs[0]?.url || '';
+        const isLulustream = currentUrl.includes('lulustream.com');
+        const isLuluvdo = currentUrl.includes('luluvdo.com');
+        
+        if (!isLulustream && !isLuluvdo) {
+            throw new Error('Please navigate to lulustream.com or luluvdo.com to use this extension');
         }
 
         const response = await chrome.tabs.sendMessage(tabs[0].id, { action: 'extractLinks' });
