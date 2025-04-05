@@ -4,9 +4,20 @@ function extractDownloadLinks() {
         // Array to store all download links
         const downloadLinks = [];
         
-        // Find all download links on the page
-        // Note: Selectors might need to be adjusted based on lulustream.com's actual structure
-        const linkElements = document.querySelectorAll('a[href*="download"], .download-link, a[href*=".mp4"], a[href*=".mkv"]');
+        // Determine which site we're on
+        const isLulustream = window.location.hostname.includes('lulustream.com');
+        const isLuluvdo = window.location.hostname.includes('luluvdo.com');
+        
+        // Find all download links on the page based on the site
+        let linkElements;
+        if (isLulustream) {
+            linkElements = document.querySelectorAll('a[href*="download"], .download-link, a[href*=".mp4"], a[href*=".mkv"]');
+        } else if (isLuluvdo) {
+            // Adjust selectors based on luluvdo.com's structure
+            linkElements = document.querySelectorAll('a[href*="download"], .download-btn, a[href*=".mp4"], a[href*=".mkv"], .vdo-download');
+        } else {
+            throw new Error('Unsupported website');
+        }
         
         linkElements.forEach((element, index) => {
             const url = element.href;
