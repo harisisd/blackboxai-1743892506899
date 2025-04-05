@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lulustream Mass Downloader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lulustream Mass Downloader</h1>
+            <button id="refreshBtn" class="btn">
+                <span class="icon">🔄</span> Refresh
+            </button>
+        </header>
+
+        <div class="content">
+            <div class="controls">
+                <label class="select-all-container">
+                    <input type="checkbox" id="selectAll">
+                    <span>Select All</span>
+                </label>
+                <span id="selectedCount">(0 selected)</span>
+            </div>
+
+            <div id="downloadList" class="download-list">
+                <!-- Download items will be inserted here -->
+                <div class="loading-message">Scanning for downloadable content...</div>
+            </div>
+
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+
+        <footer>
+            <button id="downloadBtn" class="btn primary" disabled>
+                <span class="icon">⬇️</span> Download Selected
+            </button>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
