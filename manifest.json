@@ -10,7 +10,8 @@
     "storage"
   ],
   "host_permissions": [
-    "https://lulustream.com/*"
+    "https://lulustream.com/*",
+    "https://luluvdo.com/*"
   ],
   "action": {
     "default_popup": "popup.html"
@@ -19,7 +20,10 @@
     "service_worker": "background.js"
   },
   "content_scripts": [{
-    "matches": ["https://lulustream.com/*"],
+    "matches": [
+      "https://lulustream.com/*",
+      "https://luluvdo.com/*"
+    ],
     "js": ["contentScript.js"]
   }]
 }
